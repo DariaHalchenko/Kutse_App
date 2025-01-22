@@ -19,13 +19,13 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Kutse", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Guests", "Guests", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-
+                    <li>@Html.ActionLink("Puhad", "Index", "Puhad", new { area = "" }, new { @class = "nav-link" })</li>
                     <!-- Если пользователь аутентифицирован -->
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>
                             <form action="@Url.Action("LogOff", "Account")" method="post" style="display:inline;">
-                                @Html.AntiForgeryToken() 
+                                @Html.AntiForgeryToken()
                                 <button type="submit" class="nav-link btn btn-link" style="border:none; background:none; color:white;">Log Off</button>
                             </form>
                         </li>
