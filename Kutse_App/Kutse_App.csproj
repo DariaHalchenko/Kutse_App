@@ -270,6 +270,9 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Puhad\Index.cshtml" />
+    <Content Include="Views\Puhad\Create.cshtml" />
+    <Content Include="Views\Puhad\Delete.cshtml" />
+    <Content Include="Views\Puhad\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
