@@ -6,9 +6,8 @@ namespace Kutse_App.Controllers
 {
     public class PuhadController : Controller
     {
-  
         private GuestContext db = new GuestContext();
-        public ActionResult Index()
+        public ActionResult Puhad()
         {
             return View(db.Puhads.ToList());
         }
