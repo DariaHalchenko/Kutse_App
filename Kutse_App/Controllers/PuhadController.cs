@@ -1,65 +1,85 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Kutse_App.Models;
-using System.Collections.Generic;
 
-public class PuhadController : Controller
+namespace Kutse_App.Controllers
 {
-    private readonly GuestContext db = new GuestContext();
-
-    // Отображение списка праздников
-    public ActionResult Index()
+    public class PuhadController : Controller
     {
-        var puhad = db.Puhads.ToList();
-        return View(puhad);
-    }
+  
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-    // Регистрация на праздник
-    [Authorize]
-    public ActionResult Register(int id)
-    {
-        var puhkuse = db.Puhads.Find(id);
-        if (puhkuse == null)
+        // Список праздников
+        public ActionResult Index()
         {
-            return HttpNotFound();
+            return View(db.Puhad.ToList());
         }
 
-        var guest = new Guest { PuhadId = id };
-        return View(guest);
-    }
-
-    [HttpPost]
-    [Authorize]
-    public ActionResult Register(Guest guest)
-    {
-        if (ModelState.IsValid)
+        // Добавление праздника (только для администратора)
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Create()
         {
-            db.Guests.Add(guest);
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Create(Puhad puhad)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Puhad.Add(puhad);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(puhad);
+        }
+
+        // Редактирование праздника
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Edit(int id)
+        {
+            var puhad = db.Puhad.Find(id);
+            if (puhad == null)
+            {
+                return HttpNotFound();
+            }
+            return View(puhad);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Edit(Puhad puhad)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(puhad).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(puhad);
+        }
+
+        // Удаление праздника
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Delete(int id)
+        {
+            var puhad = db.Puhad.Find(id);
+            if (puhad == null)
+            {
+                return HttpNotFound();
+            }
+            return View(puhad);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var puhad = db.Puhad.Find(id);
+            db.Puhad.Remove(puhad);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        return View(guest);
-    }
-
-    // Просмотр участников праздника
-    [Authorize]
-    public ActionResult Osalejad(int id)
-    {
-        // Находим праздник по ID
-        var puhkuse = db.Puhads.Find(id);
-        if (puhkuse == null)
-        {
-            return HttpNotFound();
-        }
-
-        // Получаем список участников
-        var participants = db.Guests.Where(g => g.PuhadId == id).ToList();
-
-        // Передаем имя праздника через ViewBag
-        ViewBag.PuhkuseNimi = puhkuse.Puhkuse_nimi;
-
-        // Возвращаем представление с участниками
-        return View(participants);
     }
 }

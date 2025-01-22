@@ -12,20 +12,28 @@
         <h4>Loo uus konto.</h4>
         <hr />
         @Html.ValidationSummary("", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(m => m.Email, new { @class = "form-label" })
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        <div class="row">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "form-label" })
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        <div class="row">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "form-label" })
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        <div class="row">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
         </div>
-        <div class="form-group">
-            <input type="submit" value="Registreeri" class="btn btn-outline-dark" />
+        <div class="row">
+            <div class="offset-md-2 col-md-10">
+                <input type="submit" value="Registreeri" class="btn btn-outline-dark" />
+            </div>
         </div>
     }
 </main>
@@ -42,12 +50,12 @@
         padding: 20px;
     }
 
-    main {
+    form {
         background-color: MintCream;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
+        max-width: 400px;
         margin: 0 auto;
     }
 
@@ -57,24 +65,13 @@
     }
 
     input[type="text"],
-    input[type="password"] {
+    select {
         width: 100%;
-        padding: 10px;
+        padding: 8px;
+        margin-top: 5px;
         margin-bottom: 15px;
         border: 1px solid black;
         border-radius: 4px;
     }
-
-    input[type="submit"] {
-        padding: 10px 20px;
-        color: white;
-        background-color: #007bff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
 </style>
+

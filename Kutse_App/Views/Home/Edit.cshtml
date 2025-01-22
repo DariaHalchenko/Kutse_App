@@ -6,7 +6,6 @@
 
 <h2>Edit</h2>
 
-<!-- Форма для редактирования гостя -->
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -15,10 +14,8 @@
         <h4>Guest</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
         @Html.HiddenFor(model => model.Id)
 
-        <!-- Поле для имени гостя -->
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -27,7 +24,6 @@
             </div>
         </div>
 
-        <!-- Поле для email -->
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -36,7 +32,6 @@
             </div>
         </div>
 
-        <!-- Поле для телефона -->
         <div class="form-group">
             @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -45,7 +40,6 @@
             </div>
         </div>
 
-        <!-- Поле для присутствия -->
         <div class="form-group">
             @Html.LabelFor(model => model.WillAttend, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -56,7 +50,6 @@
             </div>
         </div>
 
-        <!-- Кнопка для сохранения данных -->
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -68,28 +61,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-<hr />
-
-<!-- Форма для редактирования роли -->
-<h2>Редактирование роли</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div>
-        @Html.ValidationSummary(true, "")
-
-        @Html.HiddenFor(model => model.Id)
-
-        <!-- Поле для названия роли -->
-        <p>Название: @Html.EditorFor(model => model.Name)</p>
-
-        <!-- Поле для описания роли -->
-        <p>Описание: @Html.EditorFor(model => model.Description)</p>
-
-        <!-- Кнопка для изменения роли -->
-        <p><input type="submit" value="Изменить" /></p>
-    </div>
-}
