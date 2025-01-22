@@ -12,7 +12,7 @@ namespace Kutse_App.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Sisesta nimi")]
-        public string Name { get; set; }
+        public string Nimi { get; set; }
 
         [Required(ErrorMessage = "Sisesta email")]
         [RegularExpression(@".+\@.+\..+", ErrorMessage = "Valesti sisestatud email")]
@@ -20,7 +20,7 @@ namespace Kutse_App.Models
 
         [Required(ErrorMessage = "Sisesta telefoni number")]
         [RegularExpression(@"\+372.+", ErrorMessage = "Numbri alguses peal olema +372")]
-        public string Phone { get; set; }
+        public string Telefon { get; set; }
 
         [Required(ErrorMessage = "Sisesta oma valik")]
         public bool? WillAttend { get; set; }

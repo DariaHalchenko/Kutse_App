@@ -1,10 +1,10 @@
 ﻿@model Kutse_App.Models.Guest
 
 @{
-    ViewBag.Title = "Thanks";
+    ViewBag.Title = "Aitäh";
 }
 <div>
-    <p> Tänan sind, @Model.Name </p>
+    <p> Tänan sind, @Model.Nimi </p>
 
 </div>
 <div>
@@ -17,9 +17,9 @@
         </p>
         using (Html.BeginForm("Meeldetuletus", "Home", FormMethod.Post))
         {
-            @Html.HiddenFor(m => m.Name)
+            @Html.HiddenFor(m => m.Nimi)
             @Html.HiddenFor(m => m.Email)
-            @Html.HiddenFor(m => m.Phone)
+            @Html.HiddenFor(m => m.Telefon)
             @Html.HiddenFor(m => m.WillAttend)
             <input type="submit" value="Meeldetuletus" name="Meeldetuletus" />
         }

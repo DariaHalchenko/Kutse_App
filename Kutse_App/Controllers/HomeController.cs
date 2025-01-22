@@ -113,7 +113,7 @@ namespace Kutse_App.Controllers
                 WebMail.UserName = "daragalcenko3@gmail.com";
                 WebMail.Password = "iqer zkvm czuv lgqn";
                 WebMail.From = "daragalcenko3@gmail.com";
-                WebMail.Send(guest.Email, " Vastus kutsele ", guest.Name + " vastas "
+                WebMail.Send(guest.Email, " Vastus kutsele ", guest.Nimi + " vastas "
                     + ((guest.WillAttend ?? false ? " tuleb peole" : " ei tule saatnud"))); ViewBag.Message = "Kiri on saatnud!";
                 ViewBag.Message = "Kiri on saatnud!";
             }
@@ -139,7 +139,7 @@ namespace Kutse_App.Controllers
                     WebMail.Password = "iqer zkvm czuv lgqn";
                     WebMail.From = "daragalcenko3@gmail.com";
 
-                    WebMail.Send(guest.Email, "Meeldetuletus", guest.Name + ", ara unusta. Pidu toimub 25.01.25! Sind ootavad väga!",
+                    WebMail.Send(guest.Email, "Meeldetuletus", guest.Nimi + ", ara unusta. Pidu toimub 25.01.25! Sind ootavad väga!",
                     null, guest.Email,
                     filesToAttach: new String[] { Path.Combine(Server.MapPath("~/Images/"), Path.GetFileName("kutse.jpg ")) }
                    );

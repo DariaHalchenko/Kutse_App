@@ -18,8 +18,8 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Kutse", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Guests", "Guests", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Puhad", "Index", "Puhad", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Külaline", "Guests", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Pühad", "Index", "Puhad", new { area = "" }, new { @class = "nav-link" })</li>
                     <!-- Если пользователь аутентифицирован -->
                     @if (User.Identity.IsAuthenticated)
                     {
