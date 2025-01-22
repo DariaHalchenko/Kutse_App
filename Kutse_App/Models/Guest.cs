@@ -25,8 +25,5 @@ namespace Kutse_App.Models
         [Required(ErrorMessage = "Sisesta oma valik")]
         public bool? WillAttend { get; set; }
 
-        // Связь с праздниками
-        public int PuhadId { get; set; }
-        public virtual Puhad Puhad { get; set; }
     }
 }
