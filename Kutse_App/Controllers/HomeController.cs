@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Services.Description;
@@ -75,9 +76,18 @@ namespace Kutse_App.Controllers
         }
 
         [HttpGet]
-        public ViewResult Ankeet()
+        public ActionResult Ankeet()
         {
-            return View();
+            var puhads = db.Puhads.ToList();
+            ViewBag.Holidays = new SelectList(puhads, "Id", "Puhkuse_nimi");
+
+            var guest = new Guest();
+            if (!User.IsInRole("Admin"))
+            {
+                guest.WillAttend = false;
+            }
+
+            return View(guest);
         }
 
         [HttpPost]
@@ -155,17 +165,20 @@ namespace Kutse_App.Controllers
             return View("Thanks", guest);
         }
         GuestContext db = new GuestContext();
-        [Authorize] //- Данное представление Guests сможет увидить только авторизованный пользователь.
+        [Authorize(Roles = "User")]
         public ActionResult Guests()
         {
             IEnumerable<Guest> guests = db.Guests;
             return View(guests);
         }
+      
+        [Authorize(Roles = "User")]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
+        [Authorize(Roles = "User")]
         [HttpPost]
         public ActionResult Create(Guest guest)
         {
@@ -173,6 +186,7 @@ namespace Kutse_App.Controllers
             db.SaveChanges();
             return RedirectToAction("Guests");
         }
+        [Authorize(Roles = "User")]
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -183,6 +197,7 @@ namespace Kutse_App.Controllers
             }
             return View(g);
         }
+        [Authorize(Roles = "User")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -196,6 +211,7 @@ namespace Kutse_App.Controllers
             return RedirectToAction("Guests");
         }
         // Действие для отображения деталей гостя
+        [Authorize(Roles = "User")]
         public ActionResult Details(int id)
         {
             var guest = db.Guests.Find(id);
@@ -205,6 +221,7 @@ namespace Kutse_App.Controllers
             }
             return View(guest); // Передаем гостя в представление Details
         }
+        [Authorize(Roles = "User")]
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -215,6 +232,7 @@ namespace Kutse_App.Controllers
             }
             return View(g);
         }
+        [Authorize(Roles = "User")]
         [HttpPost, ActionName("Edit")]
         public ActionResult EditConfirmed(Guest guest)
         {

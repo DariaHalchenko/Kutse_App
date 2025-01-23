@@ -180,6 +180,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DefaultConnection.mdf" />
+    <Content Include="App_Data\DefaultConnection_log.ldf">
+      <DependentUpon>DefaultConnection.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\GuestContext.mdf" />
     <Content Include="App_Data\GuestContext_log.ldf">
       <DependentUpon>GuestContext.mdf</DependentUpon>
@@ -273,6 +277,7 @@
     <Content Include="Views\Puhad\Create.cshtml" />
     <Content Include="Views\Puhad\Delete.cshtml" />
     <Content Include="Views\Puhad\Edit.cshtml" />
+    <Content Include="Views\Puhad\Puhad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

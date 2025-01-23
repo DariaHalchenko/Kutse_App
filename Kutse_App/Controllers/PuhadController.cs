@@ -13,15 +13,15 @@ namespace Kutse_App.Controllers
         }
 
         // Добавление праздника (только для администратора)
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        //[Authorize(Roles = "Administrator")]
         public ActionResult Create(Puhad puhad)
         {
             db.Puhads.Add(puhad);
@@ -30,7 +30,7 @@ namespace Kutse_App.Controllers
         }
 
         // Редактирование праздника
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -42,8 +42,8 @@ namespace Kutse_App.Controllers
             return View(p);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Edit")]
-        //[Authorize(Roles = "Administrator")]
         public ActionResult EditConfirmed(Puhad puhad)
         {
             db.Entry(puhad).State = System.Data.Entity.EntityState.Modified;
@@ -52,7 +52,7 @@ namespace Kutse_App.Controllers
         }
 
         // Удаление праздника
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -64,8 +64,8 @@ namespace Kutse_App.Controllers
             return View(p);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
-        //[Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Puhad p = db.Puhads.Find(id);
