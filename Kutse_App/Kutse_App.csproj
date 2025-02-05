@@ -208,13 +208,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\haid_puhi.jpg" />
-    <Content Include="Images\head.jpg" />
-    <Content Include="Images\kevadpaev.jpg" />
     <Content Include="Images\kutse.jpg" />
     <Content Include="Images\kutse2.jpg" />
-    <Content Include="Images\new_year!.jpg" />
+    <Content Include="Images\new_year.jpg" />
     <Content Include="Images\soberpaev.jpg" />
-    <Content Include="Images\voidupuha.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
