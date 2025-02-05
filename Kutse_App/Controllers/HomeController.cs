@@ -13,18 +13,17 @@ namespace Kutse_App.Controllers
     {
         public ActionResult Index()
         {
-            //динамическое свойство ViewBag.Greeting таким образом, чтобы программа
-            //отределяла все четыре времени суток и соответственно здоровалась.
+           
             int hour = DateTime.Now.Hour;
-            if (hour >= 5 && hour < 12) //утро - от восхода (условно 5-6 часов) до 12 часов
+            if (hour >= 5 && hour < 12) 
             {
                 ViewBag.Greeting = "Tere hommikust";
             }
-            else if (hour >= 12 && hour < 19) //день - с 12.00 до 18.00-19.00
+            else if (hour >= 12 && hour < 19) 
             {
                 ViewBag.Greeting = "Tere päevast";
             }
-            else if (hour >= 19 && hour < 23) //вечер - с 18.00-19.00 до 23.00.
+            else if (hour >= 19 && hour < 23) 
             {
                 ViewBag.Greeting = "Tere õhtust";
             }
@@ -33,19 +32,11 @@ namespace Kutse_App.Controllers
                 ViewBag.Greeting = "Head ööd";
             }
 
-            //добавьте ViewBag.Message динамуку, например, в зависимости от месяца название
-            //праздника будет меняться(Может меняться и картинка тоже)
-
             int month = DateTime.Now.Month;
-            if (month == 12)
-            {
-                ViewBag.Message = "Häid jõule ja head uut aastat!";
-                ViewBag.ImagePath = "~/Images/head.jpg";
-            }
-            else if (month == 1)
+            if (month == 1)
             {
                 ViewBag.Message = "Happy New Year!";
-                ViewBag.ImagePath = "~/Images/new_year!.jpg";
+                ViewBag.ImagePath = "~/Images/new_year.jpg";
             }
             else if (month == 2)
             {
@@ -56,16 +47,6 @@ namespace Kutse_App.Controllers
             {
                 ViewBag.Message = "Lihavõttepühade 1. päev";
                 ViewBag.ImagePath = "~/Images/haid_puhi.jpg";
-            }
-            else if (month == 5)
-            {
-                ViewBag.Message = "Kevadpäev";
-                ViewBag.ImagePath = "~/Images/kevadpaev.jpg";
-            }
-            else if (month == 6)
-            {
-                ViewBag.Message = "Võidupüha";
-                ViewBag.ImagePath = "~/Images/voidupuha.jpg";
             }
             else
             {
